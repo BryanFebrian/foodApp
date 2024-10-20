@@ -15,9 +15,17 @@ header {
 }
 
 .logo {
-    font-size: 24px;
-    font-weight: bold;
+    text-decoration: none; /* Hilangkan garis bawah link */
+    color: White; /* Atur warna teks */
+    font-size: 24px; /* Sesuaikan ukuran teks/logo */
+    font-weight: bold; /* Jika ingin membuat teks lebih tebal */
 }
+
+.logo:hover {
+    color: #555; /* Ubah warna saat di-hover, jika diinginkan */
+    text-decoration: none; /* Pastikan tetap tidak ada garis bawah saat hover */
+}
+
 
 .search-bar {
     display: flex;
@@ -53,6 +61,18 @@ header {
     margin: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.best-product-card {
+    width: 100%; /* Mengatur lebar kartu */
+    margin: auto; /* Mengatur margin otomatis untuk sentrisasi */
+    max-width: 400px; /* Ukuran maksimum kartu */
+}
+
+.best-product-card img {
+    height: auto; /* Memastikan gambar responsif */
+    max-height: 600px; /* Atur tinggi maksimum gambar */
+    object-fit: cover; /* Memastikan gambar terpotong dengan baik */
 }
 
 .products {
@@ -91,5 +111,27 @@ footer {
     object-fit: cover; /* Gambar tetap proporsional meskipun dipotong */
     margin: 0 auto;   /* Gambar tetap berada di tengah */
 }
+
+.view-all-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #28a745; /* Warna latar belakang */
+    color: white; /* Warna teks */
+    text-align: center;
+    font-size: 16px;
+    border-radius: 5px; /* Membuat sudut tombol melengkung */
+    text-decoration: none; /* Hilangkan garis bawah */
+    transition: background-color 0.3s ease; /* Animasi transisi saat hover */
+    cursor: pointer; /* Mengubah kursor saat hover */
+    margin-top: 20px; /* Jarak atas untuk ruang antara button dan produk */
+}
+
+.view-all-btn:hover {
+    background-color: #218838; /* Warna saat di-hover */
+    text-decoration: none; /* Tetap hilangkan garis bawah saat di-hover */
+}
+
+
+
 
 
