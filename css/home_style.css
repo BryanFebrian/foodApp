@@ -1,0 +1,86 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #007BFF;
+    color: white;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.search-bar {
+    display: flex;
+}
+
+.search-bar input {
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+}
+
+.search-bar button {
+    padding: 10px;
+    background-color: #0056b3;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.about-us {
+    padding: 10px;
+    background-color: #28A745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.best-products, .all-products {
+    padding: 20px;
+    background-color: white;
+    margin: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.products {
+    display: flex;
+    flex-wrap: wrap; /* Membungkus elemen jika tidak ada ruang */
+    gap: 20px; /* Jarak antar produk */
+}
+
+.product {
+    flex: 1 1 calc(33.33% - 20px); /* Atur lebar produk menjadi sepertiga dari baris */
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+    border-radius: 8px;
+    box-sizing: border-box; /* Pastikan padding dan border diperhitungkan dalam total lebar */
+}
+
+.product img {
+    max-width: 150px; /* Atur lebar maksimum gambar */
+    height: auto; /* Sesuaikan tinggi gambar secara otomatis */
+    border-radius: 5px; /* Sudut melengkung untuk estetika */
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #f8f8f8;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
