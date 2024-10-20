@@ -1,0 +1,2 @@
+config untuk masing-masing komputer berbeda.
+david : $conn = mysqli_connect('localhost', 'root', '', 'cart_db',3307);
