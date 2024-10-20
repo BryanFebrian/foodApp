@@ -84,3 +84,12 @@ footer {
     bottom: 0;
     width: 100%;
 }
+
+.carousel-item img {
+    height: 250px;    /* Mengatur tinggi tetap */
+    width: auto;      /* Menjaga aspek rasio */
+    object-fit: cover; /* Gambar tetap proporsional meskipun dipotong */
+    margin: 0 auto;   /* Gambar tetap berada di tengah */
+}
+
+
