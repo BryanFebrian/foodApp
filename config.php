@@ -17,7 +17,3 @@ if (!$conn_users) {
     die("Connection failed to user_db: " . mysqli_connect_error());
 }
 ?>
-
-
-
-
