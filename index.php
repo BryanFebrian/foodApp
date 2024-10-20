@@ -32,7 +32,7 @@ $result_all = $conn->query($sql_all);
 
     <!-- Header -->
     <header>
-        <div class="logo">UrFood</div>
+        <a href="index.php" class="logo">UrFood</a>
         <div class="search-bar">
             <input type="text" placeholder="Search products...">
             <button type="button">Search</button>
@@ -69,41 +69,70 @@ $result_all = $conn->query($sql_all);
     <!-- Our Best Products -->
     <section class="best-products">
         <h2>Our Best Products</h2>
-        <div class="products">
+        <div class="row">
             <?php
             if ($result_best->num_rows > 0) {
                 while ($row = $result_best->fetch_assoc()) {
-                    echo "<div class='product'>";
-                    echo "<img src='uploaded_img/" . $row['image'] . "' alt='" . $row['name'] . "'>";
-                    echo "<h3>" . $row['name'] . "</h3>";
-                    echo "<p>Price: $" . $row['price'] . "</p>";
+                    echo "<div class='col-lg-4'>";
+                    echo "<div class='card best-product-card'>";
+                    echo "<img src='uploaded_img/" . $row['image'] . "' class='card-img-top' alt='" . $row['name'] . "'>";
+                    echo "<div class='card-body'>";
+                    echo "<h5 class='card-title'>" . $row['name'] . "</h5>";
+                    echo "<p class='card-text'>Price: $" . $row['price'] . "</p>";
+                    echo "</div>";
+                    echo "</div>";
                     echo "</div>";
                 }
             } else {
-                echo "Tidak ada produk unggulan.";
+                echo "<p>No featured products available.</p>";
             }
             ?>
         </div>
     </section>
 
-    <!-- All Products -->
+    <!--  Products -->
     <section class="all-products">
-        <h2>All Products</h2>
-        <div class="products">
-            <?php
-            if ($result_all->num_rows > 0) {
-                while ($row = $result_all->fetch_assoc()) {
-                    echo "<div class='product'>";
-                    echo "<img src='uploaded_img/" . $row['image'] . "' alt='" . $row['name'] . "'>";
-                    echo "<h3>" . $row['name'] . "</h3>";
-                    echo "<p>Price: $" . $row['price'] . "</p>";
-                    echo "</div>";
-                }
-            } else {
-                echo "Tidak ada produk.";
-            }
-            ?>
+        <h2>Enjoy Your Meal, Enjoy Your Day~</h2>
+        <div id="productCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="row">
+                        <?php
+                        $counter = 0;
+                        if ($result_all->num_rows > 0) {
+                            while ($row = $result_all->fetch_assoc()) {
+                                if ($counter % 3 == 0 && $counter != 0) {
+                                    echo "</div></div><div class='carousel-item'><div class='row'>";
+                                }
+                                echo "<div class='col-lg-4'>";
+                                echo "<div class='card all-product-card'>";
+                                echo "<img src='uploaded_img/" . $row['image'] . "' class='card-img-top' alt='" . $row['name'] . "'>";
+                                echo "<div class='card-body'>";
+                                echo "<h5 class='card-title'>" . $row['name'] . "</h5>";
+                                echo "<p class='card-text'>Price: $" . $row['price'] . "</p>";
+                                echo "<div class='star-icon'>&#9733;</div>"; // Bintang di bagian kanan card
+                                echo "</div>";
+                                echo "</div>";
+                                echo "</div>";
+                                $counter++;
+                            }
+                        }
+                        ?>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#productCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
         </div>
+
+        <!-- Button untuk menuju all_products.php -->
+        <a href="all_products.php" class="view-all-btn">View All</a>
     </section>
 
     <!-- Footer -->
