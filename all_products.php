@@ -1,8 +1,25 @@
 <?php
 @include 'config.php';
 
-// Ambil semua produk
-$sql_all = "SELECT image, name, price FROM products";
+// Inisialisasi variabel untuk pencarian dan pengurutan
+$search = '';
+$sort = '';
+
+// Cek jika form disubmit
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $search = isset($_POST['search']) ? $_POST['search'] : '';
+    $sort = isset($_POST['sort']) ? $_POST['sort'] : '';
+}
+
+// Bangun query SQL berdasarkan pencarian dan pengurutan
+$sql_all = "SELECT image, name, price FROM products WHERE name LIKE '%$search%'";
+
+if ($sort == 'low_to_high') {
+    $sql_all .= " ORDER BY price ASC";
+} elseif ($sort == 'high_to_low') {
+    $sql_all .= " ORDER BY price DESC";
+}
+
 $result_all = $conn->query($sql_all);
 ?>
 
@@ -22,17 +39,32 @@ $result_all = $conn->query($sql_all);
     <!-- Header -->
     <header>
         <a href="index.php" class="logo">UrFood</a>
-        <div class="search-bar">
-            <input type="text" placeholder="Search products...">
-            <button type="button">Search</button>
-        </div>
         <button class="about-us" onclick="location.href='about.php'">About Us</button>
     </header>
 
     <!-- All Products Page -->
     <section class="all-products-page">
-        <h2>Our Products</h2>
+        <h2>Rekomendasi kami untuk kalian!!!</h2>
         <div class="container">
+            <!-- Form Pencarian dan Sortir -->
+            <form method="POST" class="mb-4">
+                <div class="row">
+                    <div class="col-md-6">
+                        <input type="text" name="search" class="form-control" placeholder="Search products..." value="<?php echo htmlspecialchars($search); ?>">
+                    </div>
+                    <div class="col-md-4">
+                        <select name="sort" class="form-select">
+                            <option value="">Sort By</option>
+                            <option value="low_to_high" <?php echo ($sort == 'low_to_high') ? 'selected' : ''; ?>>Price: Low to High</option>
+                            <option value="high_to_low" <?php echo ($sort == 'high_to_low') ? 'selected' : ''; ?>>Price: High to Low</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <button type="submit" class="btn btn-primary">Search</button>
+                    </div>
+                </div>
+            </form>
+
             <div class="row">
                 <?php
                 $counter = 0;
