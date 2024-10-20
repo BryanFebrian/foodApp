@@ -23,6 +23,9 @@ $result_all = $conn->query($sql_all);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UrFood</title>
+
+    <!-- Link ke Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/home_style.css"> <!-- Link ke file CSS -->
 </head>
 <body>
@@ -36,6 +39,32 @@ $result_all = $conn->query($sql_all);
         </div>
         <button class="about-us" onclick="location.href='about.php'">About Us</button>
     </header>
+
+    <!-- Know Us More Section -->
+    <section class="know-us-more">
+        <h2>Know Us More :)</h2>
+        <div id="carouselExample" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2500">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="images/pic1.jpg" class="d-block w-100" alt="Image 1">
+                </div>
+                <div class="carousel-item">
+                    <img src="images/pic2.jpg" class="d-block w-100" alt="Image 2">
+                </div>
+                <div class="carousel-item">
+                    <img src="images/pic3.jpg" class="d-block w-100" alt="Image 3">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </section>
 
     <!-- Our Best Products -->
     <section class="best-products">
@@ -85,5 +114,9 @@ $result_all = $conn->query($sql_all);
     <?php
     $conn->close(); // Tutup koneksi
     ?>
+
+    <!-- Link ke Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>
