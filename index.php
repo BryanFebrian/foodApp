@@ -45,13 +45,13 @@ if ($result_all->num_rows > 0) {
         <div id="carouselExample" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2500">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="images/pic1.jpg" class="d-block w-100" alt="Image 1">
+                    <img src="images/slide1.jpg" class="d-block w-100" alt="Image 1">
                 </div>
                 <div class="carousel-item">
-                    <img src="images/pic2.jpg" class="d-block w-100" alt="Image 2">
+                    <img src="images/slide2.jpg" class="d-block w-100" alt="Image 2">
                 </div>
                 <div class="carousel-item">
-                    <img src="images/pic3.jpg" class="d-block w-100" alt="Image 3">
+                    <img src="images/slide3.jpg" class="d-block w-100" alt="Image 3">
                 </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
