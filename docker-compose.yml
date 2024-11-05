@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  php-apache:
+    build: .
+    container_name: php-apache-container
+    ports:
+      - "8080:80" # Akses aplikasi melalui http://localhost:8080
+    volumes:
+      - .:/var/www/html
+    depends_on:
+      - mysql-db
+
+  mysql-db:
+    image: mysql:5.7
+    container_name: mysql-container
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: cart_db
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin-container
+    environment:
+      PMA_HOST: mysql-db
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "8081:80" # Akses phpMyAdmin melalui http://localhost:8081
+    depends_on:
+      - mysql-db
+
+volumes:
+  mysql_data:

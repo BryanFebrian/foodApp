@@ -10,14 +10,14 @@ if(isset($_SESSION['username'])){
 
 if(isset($_POST['login'])){
     // Gunakan koneksi untuk users_db
-    $username = mysqli_real_escape_string($conn_users, $_POST['username']);
-    $password = mysqli_real_escape_string($conn_users, $_POST['password']);
+    $username = mysqli_real_escape_string($conn, $_POST['username']);
+    $password = mysqli_real_escape_string($conn, $_POST['password']);
 
     if(empty($username) || empty($password)){
         $message[] = 'Please fill out all fields';
     } else {
         // Query ke users_db untuk mencocokkan username dan password
-        $select = mysqli_query($conn_users, "SELECT * FROM users WHERE username = '$username' AND password = '$password'");
+        $select = mysqli_query($conn, "SELECT * FROM users WHERE username = '$username' AND password = '$password'");
         if(mysqli_num_rows($select) > 0){
             $row = mysqli_fetch_assoc($select);
             $_SESSION['user_id'] = $row['id']; // Simpan user_id ke dalam sesi

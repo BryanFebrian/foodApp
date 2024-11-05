@@ -10,17 +10,17 @@ if(!isset($_SESSION['username']) || $_SESSION['role'] != 'admin'){
 
 // Tambah User Baru
 if(isset($_POST['add_user'])){
-    $username = mysqli_real_escape_string($conn_users, $_POST['username']);
-    $password = mysqli_real_escape_string($conn_users, $_POST['password']);
-    $role = mysqli_real_escape_string($conn_users, $_POST['role']);
+    $username = mysqli_real_escape_string($conn, $_POST['username']);
+    $password = mysqli_real_escape_string($conn, $_POST['password']);
+    $role = mysqli_real_escape_string($conn, $_POST['role']);
 
     // Cek apakah username sudah ada
-    $check_username = mysqli_query($conn_users, "SELECT * FROM users WHERE username = '$username'");
+    $check_username = mysqli_query($conn, "SELECT * FROM users WHERE username = '$username'");
     if(mysqli_num_rows($check_username) > 0){
         $message[] = 'Username already exists!';
     } else {
         $insert_user = "INSERT INTO users (username, password, role) VALUES ('$username', '$password', '$role')";
-        $result = mysqli_query($conn_users, $insert_user);
+        $result = mysqli_query($conn, $insert_user);
         if($result){
             $message[] = 'New user added successfully';
         } else {
@@ -37,13 +37,13 @@ if(isset($_GET['delete'])){
     if($id == $_SESSION['user_id']){
         echo "<script>alert('Anda tidak bisa menghapus akun Anda sendiri!!!');</script>";
     } else {
-        mysqli_query($conn_users, "DELETE FROM users WHERE id = $id");
+        mysqli_query($conn, "DELETE FROM users WHERE id = $id");
         header('location:add_users.php');
     }
 }
 
 // Ambil Data User
-$users = mysqli_query($conn_users, "SELECT * FROM users WHERE username != 'admin'");
+$users = mysqli_query($conn, "SELECT * FROM users WHERE username != 'admin'");
 ?>
 
 <!DOCTYPE html>
