@@ -4,7 +4,7 @@
 //$username = "username"; // ganti dengan username database Anda
 //$password = "password"; // ganti dengan password database Anda
 //$dbname = "cart_db"; // ganti dengan nama database Anda
-
+require_once 'init_db.php';
 //Koneksi ke Database - Cara 2:
 @include 'config.php';
 
@@ -35,9 +35,12 @@ if ($result_all->num_rows > 0) {
 
     <!-- Header -->
     <header>
-        <a href="index.php" class="logo">UrFood</a>
+    <a href="index.php" class="logo">UrFood</a>
+    <div class="header-buttons">
         <button class="about-us" onclick="location.href='about.php'">About Us</button>
-    </header>
+        <button class="about-us" onclick="location.href='login.php'">Login</button>
+    </div>
+</header>
 
     <!-- Know Us More Section -->
     <section class="know-us-more">

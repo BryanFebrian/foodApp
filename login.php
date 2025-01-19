@@ -53,7 +53,6 @@ if(isset($message)){
    }
 }
 ?>
-
 <div class="login-container">
     <form action="" method="post">
         <h3>Login</h3>
@@ -61,7 +60,9 @@ if(isset($message)){
         <input type="password" name="password" placeholder="Enter your password" class="box" required>
         <input type="submit" name="login" class="btn" value="Login">
     </form>
+    <a href="index.php" class="btn home-btn">Kembali ke Home</a>
 </div>
+
 
 </body>
 </html>
@@ -118,4 +119,19 @@ if(isset($message)){
           margin-bottom: 15px;
           font-weight: bold;
       }
+      .home-btn {
+        display: inline-block;
+        margin-top: 10px;
+        background-color: #008CBA;
+        color: white;
+        text-decoration: none;
+        padding: 10px 15px;
+        border-radius: 4px;
+        transition: background-color 0.3s;
+    }
+
+    .home-btn:hover {
+        background-color: #007B9E;
+}
+
    </style>
