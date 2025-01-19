@@ -1,2 +1,22 @@
-config untuk masing-masing komputer berbeda.
-david : $conn = mysqli_connect('localhost', 'root', '', 'cart_db',3307);
+Arsitektur Aplikasi
+
+1. Komponen Utama
+Frontend:
+	File CSS: home_style.css, style.css.
+	Halaman PHP: index.php, about.php, all_products.php, dll.
+Backend:
+	Ditulis dalam PHP, mencakup file seperti admin_page.php, admin_update.php, dll.
+	Menggunakan Apache sebagai server web.
+Database:
+	MySQL sebagai database utama.
+	phpMyAdmin sebagai tool GUI untuk mengelola database.
+Docker:
+	Menggunakan Dockerfile untuk membuat image.
+	docker-compose.yml digunakan untuk mengatur multi-container (Apache, MySQL, phpMyAdmin).
+
+2. Alur Data
+	Pengguna mengakses aplikasi melalui browser di http://localhost:8080.
+	Browser memanggil server Apache yang menjalankan PHP untuk memproses permintaan.
+	Jika diperlukan akses data, backend akan mengirim query ke MySQL.
+	MySQL mengembalikan data yang diminta, dan server Apache mengirimkan hasilnya ke browser dalam bentuk halaman web.
+	PHPMyAdmin dapat digunakan di http://localhost:8080/phpmyadmin untuk pengelolaan database secara manual.
