@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: php-apache-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: php-apache
+  template:
+    metadata:
+      labels:
+        app: php-apache
+    spec:
+      containers:
+        - name: php-apache-container
+          image: littlemarmut23/foodapp2:php-apache
+          resources:
+            requests:
+              cpu: "200m"
+              memory: "256Mi"
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
+          ports:
+            - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: php-apache-service
+spec:
+  selector:
+    app: php-apache
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 80
+  type: NodePort
